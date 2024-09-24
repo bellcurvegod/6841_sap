@@ -7,3 +7,12 @@ The goal of this project is to design and implement a secure chat system with en
 ## Key Features 
 - One-on-one messaging 
 - End-to-end encryption
+
+## Technologies Used
+**Languages** 
+- Python
+- JavaScript
+
+**Frameworks**
+- Flask
+- React 
