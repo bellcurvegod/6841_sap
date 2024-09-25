@@ -35,18 +35,22 @@ Encryption protocols are sets of rules and algorithms designed to ensure secure 
 5. Matrix Protocol
 
 ## Understanding the Diffie-Hellman Algorithm ##
-Just a quick explainer of how it works as the Signal Protocol uses a variation of it named X3DH.
+Just an overview of how it works as the Signal Protocol uses a variation of it named X3DH.
+
+A common analogy for the DH Algorithm is two people (Alice and Bob) mixing paint. Both agree on a random colour to start with. Alice and Bob then send each other a message and decide on yellow as their **common colour**. They then **set their own colour**, and do not tell the other party their choice. The next step is for both of them to **mix their secret colour with the yellow colour** they agreed on. After mixing, they **send the result to the other party**. Once they have received the mixed result, they **add their secret colour to it**. As a result, **both parties generate the same colour**. This shared colour is known as the **common secret**.
+
+The important part of the DH key exchange is that both parties end up with the same result without ever needing to send the entirety of the common secret across the communication channel. It allows two parties to communicate over a potentially dangerous connection and still come up with a shared secret that they can use to make encryption keys for future communications.
 
 ## Signal Protocol
 ### Reasoning for Using the Signal Protocol in my E2E Messaging System ###
 
 ### Overview of Key Protocols and Algorithms Used ###
-1. Double Ratchet Algorithm
-- The Double Ratchet algorithm is used by two parties (Alice and Bob) to exchange encrypted messages based on a shared secret key. The parties will use some key agreement protocol (X3DH for Signal Protocol) to agree on the shared secret key. Afterwards, the parties will use the Double Ratchet to send and receive encrypted messages. The parties g
-2. X3DH (Extended Triple Diffie-Hellman) Key Agreement 
-3. AES (Advanced Encryption Standard)
-4. HMAC (Hash-based Message Authentication Code)
-5. ECDH (Elliptic Curve Diffie-Hellman)
+1. **Double Ratchet Algorithm**
+    - The Double Ratchet algorithm is used by two parties (Alice and Bob) to exchange encrypted messages based on a shared secret key. The parties will use some key agreement protocol (X3DH for Signal Protocol) to agree on the shared secret key. Afterwards, the parties will use the Double Ratchet to send and receive encrypted messages. The parties g
+2. **X3DH (Extended Triple Diffie-Hellman) Key Agreement**
+3. **AES (Advanced Encryption Standard)**
+4. **HMAC (Hash-based Message Authentication Code)**
+5. **ECDH (Elliptic Curve Diffie-Hellman)**
 
 **Note**: Due to time constraints, I intend on implementing the algorithms and protocols that form the core of the Signal Protocol so as to provide proof of concept. This includes the Double Ratchet Algorithm, the X3DH Key Agreement, and AES.
 
@@ -58,7 +62,7 @@ Just a quick explainer of how it works as the Signal Protocol uses a variation o
 
 [Venafi](https://venafi.com/blog/how-do-encryption-protocols-work/)
 
-### On Encryption Protocols
+### Signal Protocol
 [Signal](https://signal.org/docs/)
 
 [Signal Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
@@ -67,8 +71,12 @@ Just a quick explainer of how it works as the Signal Protocol uses a variation o
 
 [Diffie-Hellman Algorithm](https://www.simplilearn.com/tutorials/cryptography-tutorial/deffie-hellman-key-exchange)
 
+[More Diffie-Hellman Algorithm](https://www.comparitech.com/blog/information-security/diffie-hellman-key-exchange/)
+
 [Diffie-Hellman Algorithm Implementation](https://www.scaler.in/diffie-hellman-algorithm-implementation/)
 
 [Diffie-Hellman Algorithm Implementation 2](https://www.geeksforgeeks.org/implementation-diffie-hellman-algorithm/)
+
+[Generic Signal Protocol Specification and Implementation](https://web.eecs.umich.edu/~yit/signal.html)
 
 [Reference Signal Protocol Implementation](https://github.com/narayanpai1/Signal-Protocol-Implementation)
