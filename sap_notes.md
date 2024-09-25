@@ -22,15 +22,41 @@ Encryption protocols are sets of rules and algorithms designed to ensure secure 
 - SSH (Secure Shell): Secures remote login and other network services (eg. UNSW CSE powershell).
 - Signal Protocol: Provides end-to-end (E2E) encryption for instant messaging applications such as WhatsApp and Facebook Messenger. We will be using the Signal Protocol for this project. 
 
+### Encryption Protocols used in E2E Messaging Systems ###
+**Traits of Cryptographic Protocols Used in Instant Messaging**
+
+**Examples**
+1. Signal Protocol
+    - Used by instant messaging apps 
+2. OMEMO (OMEMO Multi-End Message and Object Encryption)
+    - An extension of the Signal Protocol used for XMPP (Extensible Messaging and Presence Protocol) messaging
+3. OTR (Off-the-Record Messaging)
+4. ZRTP
+5. Matrix Protocol
+
+## Understanding the Diffie-Hellman Algorithm ##
+Just a quick explainer of how it works as the Signal Protocol uses a variation of it named X3DH.
+
 ## Signal Protocol
 ### Reasoning for Using the Signal Protocol in my E2E Messaging System ###
 
-### Key Protocols and Algorithms Used ###
+### Overview of Key Protocols and Algorithms Used ###
+1. Double Ratchet Algorithm
+- The Double Ratchet algorithm is used by two parties (Alice and Bob) to exchange encrypted messages based on a shared secret key. The parties will use some key agreement protocol (X3DH for Signal Protocol) to agree on the shared secret key. Afterwards, the parties will use the Double Ratchet to send and receive encrypted messages. The parties g
+2. X3DH (Extended Triple Diffie-Hellman) Key Agreement 
+3. AES (Advanced Encryption Standard)
+4. HMAC (Hash-based Message Authentication Code)
+5. ECDH (Elliptic Curve Diffie-Hellman)
+
+**Note**: Due to time constraints, I intend on implementing the algorithms and protocols that form the core of the Signal Protocol so as to provide proof of concept. This includes the Double Ratchet Algorithm, the X3DH Key Agreement, and AES.
 
 ### Pros and Cons of Using the Signal Protocol ###
+
 ## References
 ### Overview of Encryption
 [Cloudflare](https://www.cloudflare.com/learning/ssl/what-is-encryption/)
+
+[Venafi](https://venafi.com/blog/how-do-encryption-protocols-work/)
 
 ### On Encryption Protocols
 [Signal](https://signal.org/docs/)
@@ -38,6 +64,8 @@ Encryption protocols are sets of rules and algorithms designed to ensure secure 
 [Signal Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
 
 [Signal X3DH Key Agreement Protocol](https://signal.org/docs/specifications/x3dh/)
+
+[Diffie-Hellman Algorithm](https://www.simplilearn.com/tutorials/cryptography-tutorial/deffie-hellman-key-exchange)
 
 [Diffie-Hellman Algorithm Implementation](https://www.scaler.in/diffie-hellman-algorithm-implementation/)
 
