@@ -34,8 +34,13 @@ Encryption protocols are sets of rules and algorithms designed to ensure secure 
 
 ### On Encryption Protocols
 [Signal](https://signal.org/docs/)
+
 [Signal Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
+
 [Signal X3DH Key Agreement Protocol](https://signal.org/docs/specifications/x3dh/)
+
 [Diffie-Hellman Algorithm Implementation](https://www.scaler.in/diffie-hellman-algorithm-implementation/)
+
 [Diffie-Hellman Algorithm Implementation 2](https://www.geeksforgeeks.org/implementation-diffie-hellman-algorithm/)
+
 [Reference Signal Protocol Implementation](https://github.com/narayanpai1/Signal-Protocol-Implementation)
