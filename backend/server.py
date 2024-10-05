@@ -1,32 +1,41 @@
+# This file contains the implementation of the backend server that stores the keys 
 from flask import Flask, request, jsonify
-import x3dh
-# from key_agreement import Bundle, Custom_State
+import json
+import os
+from cryptography.fernet import Fernet
+from x3dh import Bundle  
 
 app = Flask(__name__)
 
 @app.route('/publish_bundle', methods=['POST'])
-
 def publish_bundle():
-    data = request.json
+    data = request.get_json()
 
-    if not data:
-        return jsonify({'error': 'no data provided'}), 400
-    
-    try:
-        identity_key = bytes(data['identity_key'], 'utf-8')
-        signed_prekey = bytes(data['identity_key'], 'utf-8')
-        signed_prekey_sig = bytes(data['identity_key'], 'utf-8')
-        pre_keys = frozenset(bytes(key, 'utf-8') for key in data['pre_keys'])
+    if data:
+        # Extract data from the received JSON
+        identity_key = data.get('identity_key')
+        signed_pre_key = data.get('signed_pre_key')
+        signed_pre_key_sig = data.get('signed_pre_key_sig')
+        pre_keys = data.get('pre_keys')
 
-        # Create Bundle instance 
-        bundle = Bundle(identity_key, signed_prekey, signed_prekey_sig, pre_keys)
-        print("Received bundle:", bundle)
+        # Create the Bundle instance
+        bundle = Bundle(identity_key, signed_pre_key, signed_pre_key_sig, pre_keys)
 
-        return jsonify({"message": "Bundle published successfully"}), 200
+        # Process the bundle (e.g., save it or validate it)
+        return jsonify({"message": "Bundle received successfully!"}), 200
+    else:
+        return jsonify({"error": "Invalid data!"}), 400   
 
-    # Return error if key is missing 
-    except KeyError as key_error:
-        return jsonify({'error': f'Missing key: {str(key_error)}'})
-    
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(debug=True)
+    keys = {
+        "publicKey": "abcd1234",
+        "privateKey": "efgh5678"
+    }
+
+    curr_dir = os.getcwd()
+    file_path = '../data/keys.json'
+
+    with open(file_path, 'a') as f:
+        for key, value in keys.items():
+            f.write(f'{key}:{value}\n')
