@@ -1,7 +1,13 @@
-import logo from './logo.svg';
+import React from 'react';
+import Contacts from './components/Contacts.js';
+import Chat from './components/Chat.js'
+
+// import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
